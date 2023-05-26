@@ -1,5 +1,5 @@
 export const fetchWhetherInfo = async () => {
-  const whetherApiUrl = `http://api.openweathermap.org/data/2.5/weather?q=tokyo&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}&lang=ja&units=metric`;
+  const whetherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=tokyo&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}&lang=ja&units=metric`;
   const res = await fetch(whetherApiUrl);
   const json = await res.json();
   return json;
