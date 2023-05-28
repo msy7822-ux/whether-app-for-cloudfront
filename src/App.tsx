@@ -1,32 +1,15 @@
-import { fetchWhetherInfo, key_i18n } from "./lib/whether";
-import { useQuery } from "@tanstack/react-query";
+import { Suspense } from "react";
+import { Header } from "./components/common/header";
+import { Weather } from "./components/weather/weather";
 
 function App() {
-  const { data, isLoading } = useQuery(["whether"], fetchWhetherInfo);
-  const temp = data?.main?.temp;
-  const temp_min = data?.main?.temp_min;
-  const temp_max = data?.main?.temp_max;
-  const humidity = data?.main?.humidity;
-
-  if (isLoading) return <>loading...</>;
-
   return (
-    <div className="max-w-[400px] mx-auto w-full flex flex-col items-center">
-      <div>
-        {key_i18n["temp"]}
-        {temp}
-      </div>
-      <div>
-        {key_i18n["temp_min"]}
-        {temp_min}
-      </div>
-      <div>
-        {key_i18n["temp_max"]}
-        {temp_max}
-      </div>
-      <div>
-        {key_i18n["humidity"]}
-        {humidity}
+    <div className="flex flex-col gap-6">
+      <Header></Header>
+      <div className="px-4">
+        <Suspense fallback={<>loading...</>}>
+          <Weather></Weather>
+        </Suspense>
       </div>
     </div>
   );
