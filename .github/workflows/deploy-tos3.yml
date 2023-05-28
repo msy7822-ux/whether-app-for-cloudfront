@@ -13,10 +13,10 @@ jobs:
         uses: actions/checkout@main  # リポジトリをチェックアウト
 
       - name: Install Dependencies
-        run: pnpm install
+        run: npm install
 
       - name: Build
-        run: pnpm build  # React ビルド
+        run: npm build  # React ビルド
 
       - name: Deploy  # S3にデプロイ
         env:
